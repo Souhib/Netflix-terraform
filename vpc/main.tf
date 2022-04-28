@@ -9,15 +9,6 @@ resource "aws_vpc" "common_vpc" {
   }
 }
 
-
-#output "common_vpc" {
-#  value = {
-#    Name = aws_vpc.common_vpc.tags.Name
-#    cidr_block = aws_vpc.common_vpc.tags.Name
-#    id = aws_vpc.common_vpc.id
-#  }
-#}
-
 output "common_vpc" {
   value = {
     name = aws_vpc.common_vpc.tags.Name

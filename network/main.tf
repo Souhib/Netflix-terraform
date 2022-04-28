@@ -12,6 +12,7 @@ resource "aws_security_group" "ingress_ssh_own_ip_security_group" {
   }
 
   tags = {
+    Name = "sg-ingress-ssh-own-ip-security-group-${var.project_name}"
     project = var.project_name
     env = "prod"
     terraform = true
@@ -51,6 +52,7 @@ resource "aws_security_group" "ingress_web_server_security_group" {
   }
 
   tags = {
+    Name = "sg-ingress-web-server-security-group-${var.project_name}"
     project = var.project_name
     env = "prod"
     terraform = true
@@ -71,6 +73,7 @@ resource "aws_security_group" "egress_web_server_security_group" {
   }
 
   tags = {
+    Name = "sg-egress-web-server-security-group-${var.project_name}"
     project = var.project_name
     env = "prod"
     terraform = true
@@ -82,6 +85,7 @@ resource "aws_subnet" "common_subnet" {
   cidr_block        = var.vpc_info.cidr_block
 
   tags = {
+    Name = "subnet-${var.project_name}"
     project = var.project_name
     env = "prod"
     terraform = true
@@ -97,6 +101,7 @@ resource "aws_network_interface" "common_web_server_network_interface" {
   ]
 
   tags = {
+    Name = "web-server-network-interface-${var.project_name}"
     project = var.project_name
     env = "prod"
     terraform = true
@@ -107,5 +112,4 @@ output "common_web_server_network_interface" {
   value = {
     id = aws_network_interface.common_web_server_network_interface.id
   }
-  # value = aws_network_interface.common_web_server_network_interface
 }
